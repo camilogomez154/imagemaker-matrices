@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.matrices.imagemaker.controllers;
 
 import com.matrices.imagemaker.models.matrizSetup;
@@ -18,13 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class matricesController {
 
     @PostMapping("/")
-    public matrizSetup calculateMatriz(@RequestBody matrizSetup setup) {
+    public int calculateMatriz(@RequestBody matrizSetup setup) {
 
         Integer[][] matriz = new Integer[setup.getRows()][setup.getColumns()];
         int sum = 0;
 
-        System.out.println(setup.getX() + " " + setup.getY());
-        
         for (int r = 0; r < setup.getRows(); r++) {
             for (int c = 0; c < setup.getColumns(); c++) {
                 int z = setup.getZ();
@@ -37,22 +30,15 @@ public class matricesController {
                     set = z + r;
                 }
                 
-                System.out.print(set + " ");
-                
                 if (r <= setup.getY() && c <= setup.getX()) {
-                    // System.out.println("entro con x,y " + r + " " + c);
                     sum += set;
                 }
                 
                 matriz[r][c] = set;
             }
-            System.out.println("");
         }
         
-        System.out.println(sum);
-        
-
-        return setup;
+        return sum;
     }
 
 }
