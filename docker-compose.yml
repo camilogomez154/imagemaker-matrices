@@ -1,0 +1,9 @@
+version: "3.7"
+services: 
+
+  matrices:
+    container_name: matrices-api
+    restart: always
+    build:
+      context: .
+      dockerfile: ./Dockerfile
